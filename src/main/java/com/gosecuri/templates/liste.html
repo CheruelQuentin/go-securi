@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Go Securi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="left-part">
+        <h1>Go Securi</h1>
+      </div>
+      <div class="middle-part">
+        <h3>Liste des agents</h3>
+      </div>
+    </div>
+    <div class="body">
+      <div class="materiel">
+        <a href="">Berthier Corinne</a>
+        <a href="">Dupont Benoit</a>
+        <a href="">Boulanger Théo</a>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: "Roboto", sans-serif;
+    background: url(polygon-scatter-haikei.svg) no-repeat;
+    background-size: cover;
+  }
+
+  .header {
+    display: flex;
+    padding: 50px;
+  }
+
+  .header .left-part {
+    display: flex;
+    justify-content: left;
+  }
+
+  .header .middle-part {
+    display: flex;
+    align-items: center;
+    margin: auto;
+  }
+
+  .body .materiel {
+    display: flex;
+    flex-direction: column;
+    margin: 100px 0 0 0;
+  }
+
+  .body .materiel a {
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-start;
+    width: max-content;
+    margin: 15px 0 0 90px;
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
+  }
+</style>
