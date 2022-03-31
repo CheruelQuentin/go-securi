@@ -13,16 +13,26 @@ import java.util.Locale;
 
 public class AgentPageGenerator {
 
-    public static final String AGENT_TEMPLATE_PATH = "/src/main/java/com/gosecuri/templates/agent.html";
-    public static final String GENERATED_AGENT_PAGE_FOLDER = "/src/main/java/com/gosecuri/generated/";
+    public static final String BASE_PATH = "/src/main/java/com/gosecuri";
+    public static final String AGENT_TEMPLATE_PATH = BASE_PATH + "/templates/agent.html";
+    public static final String GENERATED_AGENT_PAGE_FOLDER = BASE_PATH + "/generated/";
+    public static final String IDENTITY_CARDS_PATH = BASE_PATH + "/identitycards/";
 
     private final String dirPath;
     private Document doc;
     private final List<String> agentData;
+    private final String agentFileName;
 
     public AgentPageGenerator(List<String> _agentData) {
         dirPath = System.getProperty("user.dir");
         agentData = _agentData;
+        agentFileName = generateFileName();
+    }
+
+    public String generateFileName() {
+        //Last name is index 0
+        //First name is index 1
+        return agentData.get(1).toLowerCase(Locale.ROOT).charAt(0) + agentData.get(0).toLowerCase(Locale.ROOT);
     }
 
     private void LoadHTMLTemplateToDocument() throws IOException {
@@ -31,14 +41,14 @@ public class AgentPageGenerator {
         doc = Jsoup.parse(htmlString);
     }
 
-    private void injectDataFromFile() {
+    private void toggleEquipment() {
         //Check equipment
         boolean isEquipment = false;
         for(String line : agentData) {
             if(isEquipment) {
-                for(Element input : doc.select("input")) {
-                    if(input.id().equals(line)) {
-                        input.attr("checked", true);
+                for(Element checkbox : doc.select(".checkbox")) {
+                    if(checkbox.id().equals(line)) {
+                        checkbox.addClass("checked");
                     }
                 }
             }
@@ -49,19 +59,23 @@ public class AgentPageGenerator {
 
         //Inject identity
         String identity = agentData.get(1) + " " + agentData.get(0);
-        doc.getElementById("identification").text(identity);
+        doc.getElementById("agent-name").text(identity);
     }
 
-    public String generateFileName() {
-        //Last name is index 0
-        //First name is index 1
-        return agentData.get(1).toLowerCase(Locale.ROOT).charAt(0) + agentData.get(0).toLowerCase(Locale.ROOT) + ".html";
+    private String getIdentityCardPath() {
+        return dirPath + IDENTITY_CARDS_PATH + agentFileName + ".png";
+    }
+
+    private void addIdentityCard() {
+        Element img = doc.select("#identity").first();
+        img.attr("src", getIdentityCardPath());
     }
 
     public void generateHTML() throws IOException {
         LoadHTMLTemplateToDocument();
-        injectDataFromFile();
-        File newHtmlFile = new File(dirPath + GENERATED_AGENT_PAGE_FOLDER + generateFileName());
+        toggleEquipment();
+        addIdentityCard();
+        File newHtmlFile = new File(dirPath + GENERATED_AGENT_PAGE_FOLDER + agentFileName + ".html");
         FileUtils.writeStringToFile(newHtmlFile, doc.toString(), (String) null);
     }
 }

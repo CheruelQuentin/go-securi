@@ -6,58 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <div class="header">
       <div class="left-part">
-        <p id="identification"></p>
+        <p id="agent-name"></p>
       </div>
       <div class="right-part">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/French_Identity_card_1988_-_1994.jpg" alt="Carte d'identité" />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/2/23/French_Identity_card_1988_-_1994.jpg"
+          alt="Carte d'identité"
+          id="identity"
+        />
       </div>
     </div>
     <div class="body">
       <div class="materiel">
         <div>
-          <input type="checkbox" id="mousqueton" />
+          <div class="checkbox" id="mousqueton"></div>
           <label>Mousqueton</label>
         </div>
         <div>
-          <input type="checkbox" id="gants" />
+          <div class="checkbox" id="gants"></div>
           <label>Gants d’intervention</label>
         </div>
         <div>
-          <input type="checkbox" id="brassard" />
+          <div class="checkbox" id="brassard"></div>
           <label>Brassard de sécurité</label>
         </div>
         <div>
-          <input type="checkbox" id="menottes" />
+          <div class="checkbox" id="menottes"></div>
           <label>Porte menottes</label>
         </div>
         <div>
-          <input type="checkbox" id="cyno" />
+          <div class="checkbox" id="cyno"></div>
           <label>Bandeau agent de sécurité cynophile</label>
         </div>
         <div>
-          <input type="checkbox" id="talky" />
+          <div class="checkbox" id="talky"></div>
           <label>Talkies walkies</label>
         </div>
         <div>
-          <input type="checkbox" id="lampe" />
+          <div class="checkbox" id="lampe"></div>
           <label>Lampe torche</label>
         </div>
         <div>
-          <input type="checkbox" id="kit" />
+          <div class="checkbox" id="kit"></div>
           <label>Kit oreillette</label>
         </div>
         <div>
-          <input type="checkbox" id="taser" />
+          <div class="checkbox" id="taser"></div>
           <label>Tasers</label>
         </div>
         <div>
-          <input type="checkbox" id="lacrymo" />
+          <div class="checkbox" id="lacrymo"></div>
           <label>Bombes lacrymogènes</label>
         </div>
       </div>
@@ -69,6 +76,7 @@
   * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
 
   body {
@@ -92,21 +100,47 @@
     justify-content: right;
   }
 
+  img {
+    width: 700px;
+  }
+
   .body .materiel {
     display: flex;
     flex-direction: column;
-    margin: 100px 0 0 0;
+    padding: 0 40%;
+    margin-top: 100px;
   }
 
-  .body .materiel div {
+  .materiel div {
     display: flex;
     flex-direction: row-reverse;
-    align-self: flex-end;
-    width: max-content;
-    margin: 10px 45% 0 0;
+    gap: 0.5rem;
   }
 
   .body .materiel div input {
     margin: 0 0 0 15px;
+  }
+
+  .checkbox {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgb(128, 128, 128);
+    border-radius: 3px;
+    background-color: rgba(128, 128, 128, 0.05);
+    line-height: 0;
+  }
+
+  .checked::before {
+    content: "\2713";
+    color: white;
+    position: absolute;
+    top: 7px;
+    left: 2px;
+    font-size: 0.85rem;
+  }
+
+  .checked {
+    background-color: #3484ed;
   }
 </style>
