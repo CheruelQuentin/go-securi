@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -19,10 +22,15 @@
       </div>
     </div>
     <div class="body">
-      <div class="materiel">
-        <a href="">Berthier Corinne</a>
-        <a href="">Dupont Benoit</a>
-        <a href="">Boulanger Théo</a>
+      <div class="agents">
+        <a href="" id="sconnor">Sarah Connor</a>
+        <a href="" id="cberthier">Corinne Berthier</a>
+        <a href="" id="jmacclane">John MacClane</a>
+        <a href="" id="afoley">Albert Foley</a>
+        <a href="" id="mriggs">Marc Riggs</a>
+        <a href="" id="jwest">James West</a>
+        <a href="" id="sholmes">Sabrina Holmes</a>
+        <a href="" id="jrouletabille">Julien Rouletabille</a>
       </div>
     </div>
   </body>
@@ -56,13 +64,13 @@
     margin: auto;
   }
 
-  .body .materiel {
+  .body .agents {
     display: flex;
     flex-direction: column;
     margin: 100px 0 0 0;
   }
 
-  .body .materiel a {
+  .body .agents a {
     display: flex;
     flex-direction: row-reverse;
     align-self: flex-start;
@@ -71,5 +79,13 @@
     font-size: 18px;
     color: black;
     font-weight: 600;
+  }
+
+  .disabled {
+    color: currentColor;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+    text-decoration: none;
   }
 </style>
