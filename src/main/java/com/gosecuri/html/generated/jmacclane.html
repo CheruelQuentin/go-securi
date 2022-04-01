@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="preconnect" href="https://fonts.googleapis.com"> 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&amp;display=swap" rel="stylesheet"> 
  </head> 
  <body> 
@@ -14,13 +15,13 @@
     <p id="agent-name">Julien Macclane</p> 
    </div> 
    <div class="right-part"> 
-    <img src="C:\Users\lucas\Desktop\Main\Licence\MSPR Developpement d'une application informatique\go-securi/src/main/java/com/gosecuri/html/assets/identitycards/jmacclane.png" alt="Carte d'identité" id="identity"> 
+    <img src="../assets/identitycards/jmacclane.png" alt="Carte d'identité" id="identity"> 
    </div> 
   </div> 
   <div class="body"> 
    <div class="materiel"> 
     <div> 
-     <div class="checkbox checked" id="mousqueton"></div> <label>Mousqueton</label> 
+     <div class="checkbox" id="mousqueton"></div> <label>Mousqueton</label> 
     </div> 
     <div> 
      <div class="checkbox" id="gants"></div> <label>Gants d’intervention</label> 
@@ -86,6 +87,7 @@
   .body .materiel {
     display: flex;
     flex-direction: column;
+    gap: 0.35rem;
     padding: 0 40%;
     margin-top: 100px;
   }
@@ -100,6 +102,11 @@
     margin: 0 0 0 15px;
   }
 
+  .header .left-part p {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
   .checkbox {
     position: relative;
     width: 16px;
@@ -110,6 +117,10 @@
     line-height: 0;
   }
 
+  .checked {
+    background-color: #3484ed;
+  }
+
   .checked::before {
     content: "\2713";
     color: white;
@@ -117,10 +128,6 @@
     top: 7px;
     left: 2px;
     font-size: 0.85rem;
-  }
-
-  .checked {
-    background-color: #3484ed;
   }
 </style> 
  </body>

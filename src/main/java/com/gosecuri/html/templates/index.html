@@ -7,6 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
       rel="stylesheet"
     />
@@ -15,22 +19,22 @@
   <body>
     <div class="header">
       <div class="left-part">
-        <h1>Go Securi</h1>
+        <img src="/assets/images/logo.PNG" alt="logo" class="logo" />
       </div>
       <div class="middle-part">
-        <h3>Liste des agents</h3>
+        <h1>Liste des agents</h1>
       </div>
     </div>
-    <div class="body">
+    <div class="container">
       <div class="agents">
-        <a href="" id="sconnor">Sarah Connor</a>
-        <a href="" id="cberthier">Corinne Berthier</a>
-        <a href="" id="jmacclane">John MacClane</a>
-        <a href="" id="afoley">Albert Foley</a>
-        <a href="" id="mriggs">Marc Riggs</a>
-        <a href="" id="jwest">James West</a>
-        <a href="" id="sholmes">Sabrina Holmes</a>
-        <a href="" id="jrouletabille">Julien Rouletabille</a>
+        <a href="#" id="sconnor">Sarah Connor</a>
+        <a href="#" id="cberthier">Corinne Berthier</a>
+        <a href="#" id="jmacclane">John MacClane</a>
+        <a href="#" id="afoley">Albert Foley</a>
+        <a href="#" id="mriggs">Marc Riggs</a>
+        <a href="#" id="jwest">James West</a>
+        <a href="#" id="sholmes">Sabrina Holmes</a>
+        <a href="#" id="jrouletabille">Julien Rouletabille</a>
       </div>
     </div>
   </body>
@@ -46,6 +50,15 @@
     font-family: "Roboto", sans-serif;
     background: url(polygon-scatter-haikei.svg) no-repeat;
     background-size: cover;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+  }
+
+  .logo {
+    width: 200px;
   }
 
   .header {
@@ -64,13 +77,13 @@
     margin: auto;
   }
 
-  .body .agents {
+  .container .agents {
     display: flex;
     flex-direction: column;
     margin: 100px 0 0 0;
   }
 
-  .body .agents a {
+  .container .agents a {
     display: flex;
     flex-direction: row-reverse;
     align-self: flex-start;
@@ -78,7 +91,6 @@
     margin: 15px 0 0 90px;
     font-size: 18px;
     color: black;
-    font-weight: 600;
   }
 
   .disabled {

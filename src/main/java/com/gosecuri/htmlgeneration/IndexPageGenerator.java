@@ -29,7 +29,7 @@ public class IndexPageGenerator implements HTMLGenerator{
         return List.of(f.list());
     }
 
-    private Boolean agentHasPage(String agentFileName) {
+    private Boolean agentHasPage(final String agentFileName) {
         for(String path : allAgentPagePaths) {
             if(path.contains(agentFileName)) return true;
         }

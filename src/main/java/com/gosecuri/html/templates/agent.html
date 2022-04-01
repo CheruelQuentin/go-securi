@@ -7,6 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
       rel="stylesheet"
     />
@@ -107,6 +111,7 @@
   .body .materiel {
     display: flex;
     flex-direction: column;
+    gap: 0.35rem;
     padding: 0 40%;
     margin-top: 100px;
   }
@@ -121,6 +126,11 @@
     margin: 0 0 0 15px;
   }
 
+  .header .left-part p {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
   .checkbox {
     position: relative;
     width: 16px;
@@ -131,6 +141,10 @@
     line-height: 0;
   }
 
+  .checked {
+    background-color: #3484ed;
+  }
+
   .checked::before {
     content: "\2713";
     color: white;
@@ -138,9 +152,5 @@
     top: 7px;
     left: 2px;
     font-size: 0.85rem;
-  }
-
-  .checked {
-    background-color: #3484ed;
   }
 </style>

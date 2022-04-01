@@ -14,7 +14,6 @@ import static com.gosecuri.utils.PathUtils.AGENT_TEXT_FILES_FOLDER_PATH;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        String dirPath = System.getProperty("user.dir");
         File f = new File(AGENT_TEXT_FILES_FOLDER_PATH);
 
         String[] files = f.list();

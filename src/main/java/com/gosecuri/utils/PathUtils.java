@@ -9,8 +9,9 @@ public final class PathUtils {
     public static final String INDEX_TEMPLATE_PATH = BASE_PATH + "/html/templates/index.html";
 
     public static final String GENERATED_FOLDER_PATH = BASE_PATH + "/html/generated/";
-    public static final String IDENTITY_CARDS_PATH = BASE_PATH + "/html/assets/identitycards/";
+    public static final String IDENTITY_CARDS_FOLDER_PATH = "../assets/identitycards/";
     public static final String AGENT_TEXT_FILES_FOLDER_PATH = BASE_PATH + "/textfiles/agentfiles/";
+
     public static final String STAFF_FILE_PATH = BASE_PATH + "/textfiles/staff.txt";
 
     private PathUtils() { }

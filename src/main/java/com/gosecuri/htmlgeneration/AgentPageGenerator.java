@@ -19,14 +19,13 @@ public class AgentPageGenerator implements HTMLGenerator {
     private final List<String> agentData;
     private final String agentFileName;
 
-    public AgentPageGenerator(List<String> _agentData) {
+    public AgentPageGenerator(final List<String> _agentData) {
         agentData = _agentData;
         agentFileName = generateFileName();
     }
 
     public String generateFileName() {
-        //Last name is index 0
-        //First name is index 1
+        //Last name is index 0, first name is index 1
         return agentData.get(1).toLowerCase(Locale.ROOT).charAt(0) + agentData.get(0).toLowerCase(Locale.ROOT);
     }
 
@@ -37,8 +36,7 @@ public class AgentPageGenerator implements HTMLGenerator {
         doc = Jsoup.parse(htmlString);
     }
 
-    private void toggleEquipment() {
-        //Check equipment
+    private void addEquipment() {
         boolean isEquipment = false;
         for(String line : agentData) {
             if(isEquipment) {
@@ -53,13 +51,12 @@ public class AgentPageGenerator implements HTMLGenerator {
             }
         }
 
-        //Inject identity
         String identity = agentData.get(1) + " " + agentData.get(0);
         doc.getElementById("agent-name").text(identity);
     }
 
     private String getIdentityCardPath() {
-        return IDENTITY_CARDS_PATH + agentFileName + ".png";
+        return (IDENTITY_CARDS_FOLDER_PATH + agentFileName + ".png").replaceAll("\\\\", "/");
     }
 
     private void addIdentityCard() {
@@ -70,7 +67,7 @@ public class AgentPageGenerator implements HTMLGenerator {
     @Override
     public void generateHTML() throws IOException {
         LoadHTMLTemplateToDocument();
-        toggleEquipment();
+        addEquipment();
         addIdentityCard();
         File newHtmlFile = new File(GENERATED_FOLDER_PATH + agentFileName + ".html");
         FileUtils.writeStringToFile(newHtmlFile, doc.toString(), (String) null);
