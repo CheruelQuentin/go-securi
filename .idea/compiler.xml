@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mspr-go-securi-generation-html" />
+        <module name="go-securi" />
       </profile>
     </annotationProcessing>
   </component>
