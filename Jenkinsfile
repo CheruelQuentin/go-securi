@@ -10,12 +10,18 @@ java -version'''
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             sh 'mvn test'
           }
         }
 
+      }
+    }
+
+    stage('Test unitaire') {
+      steps {
+        sh 'mvn test'
       }
     }
 
