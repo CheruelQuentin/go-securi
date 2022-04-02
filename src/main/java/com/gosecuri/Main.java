@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String outputPath = GENERATED_FOLDER_PATH;
         if(args.length > 0) {
-            String argPath = BASE_PATH + args[0];
+            String argPath = args[0];
             if(!argPath.endsWith("/")) outputPath = argPath + "/";
             else outputPath = argPath;
         }
