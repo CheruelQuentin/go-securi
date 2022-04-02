@@ -13,13 +13,13 @@ import java.util.Locale;
 
 import static com.gosecuri.utils.PathUtils.*;
 
-public class AgentPageGenerator implements HTMLGenerator {
+public class AgentPageGenerator extends PageGenerator {
 
-    private Document doc;
     private final List<String> agentData;
     private final String agentFileName;
 
-    public AgentPageGenerator(final List<String> _agentData) {
+    public AgentPageGenerator(final String outputPath, final List<String> _agentData) {
+        super(outputPath);
         agentData = _agentData;
         agentFileName = generateFileName();
     }
@@ -27,13 +27,6 @@ public class AgentPageGenerator implements HTMLGenerator {
     public String generateFileName() {
         //Last name is index 0, first name is index 1
         return agentData.get(1).toLowerCase(Locale.ROOT).charAt(0) + agentData.get(0).toLowerCase(Locale.ROOT);
-    }
-
-    @Override
-    public void LoadHTMLTemplateToDocument() throws IOException {
-        File htmlTemplateFile = new File(AGENT_TEMPLATE_PATH);
-        String htmlString = FileUtils.readFileToString(htmlTemplateFile, StandardCharsets.UTF_8);
-        doc = Jsoup.parse(htmlString);
     }
 
     private void addEquipment() {
@@ -66,10 +59,10 @@ public class AgentPageGenerator implements HTMLGenerator {
 
     @Override
     public void generateHTML() throws IOException {
-        LoadHTMLTemplateToDocument();
+        LoadHTMLTemplateToDocument(AGENT_TEMPLATE_PATH);
         addEquipment();
         addIdentityCard();
-        File newHtmlFile = new File(GENERATED_FOLDER_PATH + agentFileName + ".html");
+        File newHtmlFile = new File(outputPath + agentFileName + ".html");
         FileUtils.writeStringToFile(newHtmlFile, doc.toString(), (String) null);
     }
 }

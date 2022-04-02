@@ -14,18 +14,19 @@ import java.util.List;
 
 import static com.gosecuri.utils.PathUtils.*;
 
-public class IndexPageGenerator implements HTMLGenerator{
+public class IndexPageGenerator extends PageGenerator {
 
-    private Document doc;
     //Paths of all the HTML pages of agents
-    private List<String> allAgentPagePaths;
+    private final List<String> allAgentPagePaths;
 
-    public IndexPageGenerator() {
+    public IndexPageGenerator(final String _outputPath) {
+        super(_outputPath);
         allAgentPagePaths = getAllAgentPagePaths();
     }
 
     private List<String> getAllAgentPagePaths() {
-        File f = new File(GENERATED_FOLDER_PATH);
+        //Retrieve paths of generated HTML files
+        File f = new File(outputPath);
         return List.of(f.list());
     }
 
@@ -59,17 +60,10 @@ public class IndexPageGenerator implements HTMLGenerator{
     }
 
     @Override
-    public void LoadHTMLTemplateToDocument() throws IOException {
-        File htmlTemplateFile = new File(INDEX_TEMPLATE_PATH);
-        String htmlString = FileUtils.readFileToString(htmlTemplateFile, StandardCharsets.UTF_8);
-        doc = Jsoup.parse(htmlString);
-    }
-
-    @Override
     public void generateHTML() throws IOException {
-        LoadHTMLTemplateToDocument();
+        LoadHTMLTemplateToDocument(INDEX_TEMPLATE_PATH);
         addAgentLinks();
-        File newHtmlFile = new File(GENERATED_FOLDER_PATH + "index.html");
+        File newHtmlFile = new File(outputPath + "index.html");
         FileUtils.writeStringToFile(newHtmlFile, doc.toString(), (String) null);
     }
 }
