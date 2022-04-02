@@ -14,5 +14,13 @@ java -version'''
       }
     }
 
+    stage('') {
+      steps {
+        sh '''mvn clean;
+mvn compile assembly:single;
+'''
+      }
+    }
+
   }
 }
