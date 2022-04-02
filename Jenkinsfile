@@ -22,13 +22,13 @@ java -version'''
 
     stage('exec JAR') {
       steps {
-        sh 'java -jar gosecuri.jar /Documents;'
+        sh 'java -jar gosecuri.jar $HOME/Documents/mspr;'
       }
     }
 
     stage('scp') {
       steps {
-        sh 'cd /Documents;pwd;scp mspr/*.html quentin@192.168.1.42:/home/quentin;'
+        sh 'cd $HOME/Documents; pwd;scp mspr/*.html quentin@192.168.1.42:/home/quentin;'
       }
     }
 
