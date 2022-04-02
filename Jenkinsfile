@@ -22,7 +22,7 @@ java -version'''
 
     stage('exec JAR') {
       steps {
-        sh 'java -jar gosecuri.jar /var/gosecuri/html'
+        sh 'java -jar gosecuri.jar /var/html/gosecuri;'
       }
     }
 
