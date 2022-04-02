@@ -38,6 +38,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <finalName>gosecuri</finalName>
+                    <outputDirectory>${basedir}</outputDirectory>
                     <archive>
                         <manifest>
                             <mainClass>com.gosecuri.Main</mainClass>
