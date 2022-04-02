@@ -16,8 +16,7 @@ java -version'''
 
     stage('Compile') {
       steps {
-        sh '''mvn clean;
-mvn compile assembly:single;
+        sh '''mvn clean;mvn install ;mvn compile assembly:single;
 '''
       }
     }
