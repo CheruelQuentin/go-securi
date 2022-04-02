@@ -9,15 +9,17 @@ import java.util.List;
 import com.gosecuri.htmlgeneration.AgentPageGenerator;
 import com.gosecuri.htmlgeneration.IndexPageGenerator;
 
-import static com.gosecuri.utils.PathUtils.AGENT_TEXT_FILES_FOLDER_PATH;
-import static com.gosecuri.utils.PathUtils.GENERATED_FOLDER_PATH;
+import static com.gosecuri.utils.PathUtils.*;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
         String outputPath = GENERATED_FOLDER_PATH;
-        if(args.length > 0)
-            outputPath = args[0];
+        if(args.length > 0) {
+            String argPath = BASE_PATH + args[0];
+            if(!argPath.endsWith("/")) outputPath = argPath + "/";
+            else outputPath = argPath;
+        }
 
         System.out.println(outputPath);
 

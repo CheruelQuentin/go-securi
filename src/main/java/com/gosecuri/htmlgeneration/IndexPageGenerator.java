@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.gosecuri.utils.PathUtils.*;
@@ -27,6 +28,7 @@ public class IndexPageGenerator extends PageGenerator {
     private List<String> getAllAgentPagePaths() {
         //Retrieve paths of generated HTML files
         File f = new File(outputPath);
+        if(f.list() == null) return new ArrayList<>();
         return List.of(f.list());
     }
 
