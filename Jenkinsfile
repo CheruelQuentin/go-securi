@@ -16,7 +16,7 @@ java -version'''
 
     stage('Compile') {
       steps {
-        sh 'mvn clean;mvn install ;mvn compile assembly:single;mv gosecuri.jar ../gosecuri.jar;'
+        sh 'mvn clean;mvn install ;mvn compile assembly:single;sudo mv gosecuri.jar ../gosecuri.jar;'
       }
     }
 
