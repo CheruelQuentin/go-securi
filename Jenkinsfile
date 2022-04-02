@@ -28,7 +28,7 @@ java -version'''
 
     stage('scp') {
       steps {
-        sh 'cd /Documents/mspr; pwd;scp mspr/*.html quentin@192.168.1.42:/home/quentin;pwd'
+        sh 'cd /Documents/mspr; pwd;scp *.html quentin@192.168.1.42:/home/quentin;pwd'
       }
     }
 
