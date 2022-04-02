@@ -28,7 +28,7 @@ java -version'''
 
     stage('scp') {
       steps {
-        sh 'scp cberthier.html quentin@192.168.1.42:/home/quentin; scp jmacclane.html quentin@192.168.1.42:/home/quentin; scp index.html quentin@192.168.1.42:/home/quentin;'
+        sh 'ls;scp cberthier.html quentin@192.168.1.42:/home/quentin; scp jmacclane.html quentin@192.168.1.42:/home/quentin; scp index.html quentin@192.168.1.42:/home/quentin;'
       }
     }
 
