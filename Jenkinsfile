@@ -28,7 +28,7 @@ java -version'''
 
     stage('scp') {
       steps {
-        sh 'pwd;whoami;cd /Documents/mspr;scp *.html quentin@192.168.1.42:/home/quentin;'
+        sh 'pwd;whoami;cd /Documents/mspr;sshpass -p "azerty" scp *.html quentin@192.168.1.42:/home/quentin;'
       }
     }
 
