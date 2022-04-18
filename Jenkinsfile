@@ -1,32 +1,32 @@
 pipeline {
   agent any
   stages {
-    stage('test Version') {
+    stage('Mvn and Java version') {
       steps {
         sh '''mvn --version;        
 java -version'''
       }
     }
 
-    stage('Test unitaire') {
+    stage('Unit tests') {
       steps {
         sh 'mvn test'
       }
     }
 
-    stage('Compile') {
+    stage('Create jar') {
       steps {
         sh 'mvn clean;mvn install ;mvn compile assembly:single;'
       }
     }
 
-    stage('exec JAR') {
+    stage('Execute jar') {
       steps {
         sh 'java -jar gosecuri.jar /Documents/mspr;pwd'
       }
     }
 
-    stage('scp') {
+    stage('Send files to web server') {
       steps {
         sh 'pwd;whoami;cd /Documents/mspr;sshpass -p "azerty" scp *.html quentin@192.168.1.42:/var/www/html;'
       }
