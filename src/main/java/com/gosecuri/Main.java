@@ -19,12 +19,14 @@ public class Main {
 
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
         //Set output path of generated files
-        String outputPath = GENERATED_FOLDER_PATH;
+        String outputPathTemp = GENERATED_FOLDER_PATH;
         if(args.length > 0) {
             String argPath = args[0];
-            if(!argPath.endsWith("/")) outputPath = argPath + "/";
-            else outputPath = argPath;
+            if(!argPath.endsWith("/")) outputPathTemp = argPath + "/";
+            else outputPathTemp = argPath;
         }
+
+        final String outputPath = outputPathTemp;
 
         //Create list of Agent
         List<Agent> agents = new ArrayList<>();
@@ -37,18 +39,39 @@ public class Main {
             }
         }
 
-        //Generate agents html pages
-        for(Agent agent : agents) {
-            AgentPageGenerator apg = new AgentPageGenerator(outputPath, agent);
-            apg.generateHTML();
-        }
+        Thread agentsPagesThread = new Thread(() -> {
+            //Generate agents html pages
+            for(Agent agent : agents) {
+                AgentPageGenerator apg = new AgentPageGenerator(outputPath, agent);
+                try {
+                    apg.generateHTML();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        agentsPagesThread.start();
 
-        //Generate index.html
-        IndexPageGenerator idp = new IndexPageGenerator(outputPath, agents);
-        idp.generateHTML();
+        Thread indexPageThread = new Thread(() -> {
+            //Generate index.html
+            IndexPageGenerator idp = new IndexPageGenerator(outputPath, agents);
+            try {
+                idp.generateHTML();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        indexPageThread.start();
 
-        //Generate .htpasswd
-        HtpasswdGenerator htpasswdGenerator = new HtpasswdGenerator(outputPath, agents);
-        htpasswdGenerator.generateHtpasswd();
+        Thread htpasswdThread = new Thread(() -> {
+            //Generate .htpasswd
+            HtpasswdGenerator htpasswdGenerator = new HtpasswdGenerator(outputPath, agents);
+            try {
+                htpasswdGenerator.generateHtpasswd();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        htpasswdThread.start();
     }
 }
