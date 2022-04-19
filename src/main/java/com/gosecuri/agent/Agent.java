@@ -1,6 +1,6 @@
 package com.gosecuri.agent;
 
-import com.gosecuri.security.SHA1Hashing;
+import com.gosecuri.security.MD5Encryptor;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -17,12 +17,12 @@ public class Agent {
 
     public Agent(final List<String> lines) throws NoSuchAlgorithmException {
         if(lines.size() < 4) throw new RuntimeException("Failed to create agent. Some information is missing");
-        SHA1Hashing md5 = new SHA1Hashing();
+        MD5Encryptor md5 = new MD5Encryptor();
 
         lastName = lines.get(0);
         firstName = lines.get(1);
         mission = lines.get(2);
-        encryptedPassword = md5.hash(lines.get(3));
+        encryptedPassword = md5.encrypt(lines.get(3));
         equipment = new ArrayList<>();
 
         if(lines.size() > 5) {
