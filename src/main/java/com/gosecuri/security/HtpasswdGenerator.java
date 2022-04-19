@@ -24,7 +24,7 @@ public class HtpasswdGenerator {
             content.append(agent.getUsername()).append(":").append(agent.getEncryptedPassword()).append("\n");
         }
 
-        File htpasswd = new File(outputPath + ".htpasswd");
+        File htpasswd = new File(outputPath + "agents.htpasswd");
         FileUtils.writeStringToFile(htpasswd, content.toString(), (String) null);
         System.out.println(".htpasswd generated");
     }
