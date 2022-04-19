@@ -14,5 +14,7 @@ public final class PathUtils {
 
     public static final String STAFF_FILE_PATH = BASE_PATH + "/textfiles/staff.txt";
 
+    public static final String HTACCESS_TEMPLATE_PATH = BASE_PATH + "/security/.htaccess";
+
     private PathUtils() { }
 }
