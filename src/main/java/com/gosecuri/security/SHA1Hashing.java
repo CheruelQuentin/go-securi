@@ -5,16 +5,16 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MD5Encryptor {
+public class SHA1Hashing {
 
     private static final String algorithm = "SHA-1";
     private final MessageDigest md;
 
-    public MD5Encryptor() throws NoSuchAlgorithmException {
+    public SHA1Hashing() throws NoSuchAlgorithmException {
         md = MessageDigest.getInstance(algorithm);
     }
 
-    public String encrypt(final String str) {
+    public String hash(final String str) {
         md.update(StandardCharsets.UTF_8.encode(str));
         return String.format("%032x", new BigInteger(1, md.digest()));
     }
