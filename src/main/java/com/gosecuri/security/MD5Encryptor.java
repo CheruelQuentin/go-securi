@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class MD5Encryptor {
 
-    private static final String algorithm = "MD5";
+    private static final String algorithm = "SHA-1";
     private final MessageDigest md;
 
     public MD5Encryptor() throws NoSuchAlgorithmException {
