@@ -5,7 +5,7 @@ public class SampleTest {
 
     @Test
     public void sampleTest() {
-        assertEquals(true, true);
+        assertEquals(1, 1);
     }
 
 }
