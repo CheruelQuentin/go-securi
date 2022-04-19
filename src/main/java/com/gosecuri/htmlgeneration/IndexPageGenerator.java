@@ -1,5 +1,6 @@
 package com.gosecuri.htmlgeneration;
 
+import com.gosecuri.agent.Agent;
 import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -17,46 +18,19 @@ import static com.gosecuri.utils.PathUtils.*;
 
 public class IndexPageGenerator extends PageGenerator {
 
-    //Paths of all the HTML pages of agents
-    private final List<String> allAgentPagePaths;
+    private final List<Agent> agents;
 
-    public IndexPageGenerator(final String _outputPath) {
+    public IndexPageGenerator(final String _outputPath, final List<Agent> _agents) {
         super(_outputPath);
-        allAgentPagePaths = getAllAgentPagePaths();
+        agents = _agents;
     }
 
-    private List<String> getAllAgentPagePaths() {
-        //Retrieve paths of generated HTML files
-        File f = new File(outputPath);
-        if(f.list() == null) return new ArrayList<>();
-        return List.of(f.list());
-    }
-
-    private Boolean agentHasPage(final String agentFileName) {
-        for(String path : allAgentPagePaths) {
-            if(path.contains(agentFileName)) return true;
-        }
-        return false;
-    }
-
-    private String getAgentPagePath(final String agentName) {
-        for(String agentPagePath : allAgentPagePaths) {
-            if(agentPagePath.contains(agentName)) return agentPagePath;
-        }
-        throw new RuntimeException("Could not find agent page");
-    }
-
-    private void addAgentLinks() throws IOException {
-        //Load staff.txt to retrieve all the agents
-        List<String> agents = Files.readAllLines(Path.of(STAFF_FILE_PATH));
-        for(String agent : agents) {
-            Element agentAnchor = doc.select(String.format("#%s", agent)).first();
-            //Add agent link to index.html if the agent has a page
-            if(agentHasPage(agent)) {
-                agentAnchor.attr("href", getAgentPagePath(agent));
-            }
-            else {
-                agentAnchor.addClass("disabled");
+    private void addAgentLinks() {
+        for(Agent agent : agents) {
+            Element agentAnchor = doc.select(String.format("#%s", agent.getUsername())).first();
+            if(agentAnchor != null) {
+                agentAnchor.attr("href", agent.getUsername() + ".html");
+                agentAnchor.removeClass("disabled");
             }
         }
     }
@@ -67,5 +41,6 @@ public class IndexPageGenerator extends PageGenerator {
         addAgentLinks();
         File newHtmlFile = new File(outputPath + "index.html");
         FileUtils.writeStringToFile(newHtmlFile, doc.toString(), (String) null);
+        System.out.println("index.html created, added links for " + agents.size() + " agents");
     }
 }
