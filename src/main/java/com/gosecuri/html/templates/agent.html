@@ -85,8 +85,6 @@
 
   body {
     font-family: "Roboto", sans-serif;
-    background: url(polygon-scatter-haikei.svg) no-repeat;
-    background-size: cover;
   }
 
   .header {
@@ -152,5 +150,30 @@
     top: 7px;
     left: 2px;
     font-size: 0.85rem;
+  }
+
+  @media screen and (max-width: 800px) {
+    .header {
+      flex-direction: column;
+    }
+
+    .header .left-part {
+      justify-content: center;
+    }
+
+    .header .right-part {
+      margin: 25px 0 0 0;
+      justify-content: center;
+    }
+
+    .body .materiel {
+      width: max-content;
+      padding: 0;
+      margin: 100px auto 0 auto;
+    }
+
+    #agent-name {
+      text-align: center;
+    }
   }
 </style>

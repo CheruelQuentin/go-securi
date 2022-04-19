@@ -18,5 +18,4 @@ public class MD5Encryptor {
         md.update(StandardCharsets.UTF_8.encode(str));
         return String.format("%032x", new BigInteger(1, md.digest()));
     }
-
 }
