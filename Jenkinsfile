@@ -28,7 +28,7 @@ java -version'''
 
     stage('Send files to web server') {
       steps {
-        sh 'sshpass -p "azerty" scp -r /Documents/mspr/* quentin@10.60.44.81:/var/www/html;'
+        sh 'sshpass -p "azerty" scp -r /Documents/mspr/* quentin@192.168.1.42:/var/www/html;'
       }
     }
 
